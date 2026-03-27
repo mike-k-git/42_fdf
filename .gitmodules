@@ -1,12 +1,12 @@
-[submodule "minilibx-linux"]
-	path = minilibx-linux
-	url = http://github.com/42paris/minilibx-linux.git
 [submodule "42_libft"]
 	path = 42_libft
-	url = http://github.com/mike-k-git/42_libft
-[submodule "42_ft_printf"]
-	path = 42_ft_printf
-	url = http://github.com/mike-k-git/42_ft_printf
+	url = https://github.com/mike-k-git/42_libft
 [submodule "42_get_next_line"]
 	path = 42_get_next_line
-	url = http://github.com/mike-k-git/42_get_next_line
+	url = https://github.com/mike-k-git/42_get_next_line
+[submodule "42_ft_printf"]
+	path = 42_ft_printf
+	url = https://github.com/mike-k-git/42_ft_printf
+[submodule "minilibx-linux"]
+	path = minilibx-linux
+	url = https://github.com/42paris/minilibx-linux
