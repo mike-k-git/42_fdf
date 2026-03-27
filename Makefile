@@ -1,7 +1,7 @@
 MAKEFLAGS += --no-print-directory
 
 CC      = cc
-CFLAGS  = -Wall -Wextra -Werror -MMD -DP
+CFLAGS  = -Wall -Wextra -Werror -g -MMD -DP
 
 NAME = fdf
 
@@ -36,9 +36,9 @@ LIBFTPRINTFDIR = ./42_ft_printf
 LIBFTPRINTF    = $(LIBFTPRINTFDIR)/libftprintf.a
 
 LIBGNLDIR = ./42_get_next_line
-LIBGNL    = $(LIBFTPRINTFDIR)/libgnl.a
+LIBGNL    = $(LIBGNLDIR)/libgnl.a
 
-LDFLAGS = -L$(MLXDIR) -L$(LIBFTDIR) -L$(LIBFTPRINTFDIR) -L$(LIBGNLDIR) -lft -lmlx -lXext -lX11 -lm -lz
+LDFLAGS = -L$(MLXDIR) -L$(LIBFTDIR) -L$(LIBFTPRINTFDIR) -L$(LIBGNLDIR) -lftprintf -lgnl -lft -lmlx -lXext -lX11 -lm -lz
 INCLUDES = -I$(MLXDIR)         \
 		   -I$(LIBFTDIR)       \
 		   -I$(LIBFTPRINTFDIR) \
@@ -47,7 +47,7 @@ INCLUDES = -I$(MLXDIR)         \
 all: $(NAME)
 
 $(LIBFT):
-	@$(MAKE) -s -C $(LIBFTDIR)
+	@$(MAKE) bonus -s -C $(LIBFTDIR)
 
 $(LIBFTPRINTF):
 	@$(MAKE) -s -C $(LIBFTPRINTFDIR)
@@ -58,7 +58,7 @@ $(LIBGNL):
 $(MLX):
 	@$(MAKE) -s -C $(MLXDIR)
 
-$(NAME): $(MLX) $(LIBFT) $(LIBFTPRINTFDIR) $(LIBGNL) $(OBJ)
+$(NAME): $(MLX) $(LIBFT) $(LIBFTPRINTF) $(LIBGNL) $(OBJ)
 	@echo "Linking fdf"
 	@$(CC) $(OBJ) $(LDFLAGS) -o $@
 
@@ -76,6 +76,7 @@ fclean: clean
 	@rm -rf $(MLX)
 	@$(MAKE) fclean -s -C $(LIBFTDIR)
 	@$(MAKE) fclean -s -C $(LIBGNLDIR)
+	@$(MAKE) fclean -s -C $(LIBFTPRINTFDIR)
 
 re: fclean all
 
