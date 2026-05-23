@@ -1,7 +1,7 @@
 MAKEFLAGS += --no-print-directory
 
 CC      = cc
-CFLAGS  = -Wall -Wextra -Werror -g -MMD -DP
+CFLAGS  = -Wall -Wextra -Werror -g -MMD -MP
 
 NAME = fdf
 
